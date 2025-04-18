@@ -6,9 +6,12 @@ const User=require("./user.js")
 app.use(express.json())
 
 app.post("/signup",async (req,res)=>{
-    const user= new User(req.body)
+    const user= new User({
+        firstName:"munna",
+        lastName:"bhai",
+        email:"munna@gmail.com"
+    })
     await user.save()
-    
     res.send("added")
 })
 
