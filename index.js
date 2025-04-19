@@ -18,6 +18,12 @@ app.get("/feed",async(req,res)=>{
     res.send(user)
 })
 
+app.delete("/delete",async(req,res)=>{
+    const id=req.body.id
+    const user=await User.findByIdAndDelete(id)
+    res.send("deleted")
+})
+
 db().then(()=>{
     console.log("connected")
     app.listen(3000,()=>{
