@@ -24,6 +24,13 @@ app.delete("/delete",async(req,res)=>{
     res.send("deleted")
 })
 
+app.patch("/update",async(req,res)=>{
+    const id=req.body.id
+    const body =req.body
+    const user=await User.findByIdAndUpdate(id,body)
+    res.send("updated")
+})
+
 db().then(()=>{
     console.log("connected")
     app.listen(3000,()=>{
